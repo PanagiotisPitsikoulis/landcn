@@ -12,7 +12,7 @@ import {
   RocketIcon,
   TestTubeIcon,
 } from "@repo/ui/icons";
-import { Footer, PageContainer } from "@repo/ui/landing";
+import { PageContainer } from "@repo/ui/landing";
 import {
   CtaSection,
   HeroSection,
