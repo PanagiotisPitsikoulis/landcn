@@ -1,0 +1,59 @@
+# Media Query Hook
+
+React hook for responsive design using window.matchMedia.
+
+## Usage
+
+```tsx
+import { useMediaQuery, useIsMobile } from "@/hooks/use-media-query";
+
+function Component() {
+  const isTablet = useMediaQuery(768);
+  const isMobile = useIsMobile();
+
+  return <div>{isMobile ? "Mobile View" : "Desktop View"}</div>;
+}
+```
+
+## Examples
+
+### Responsive Layout
+
+```tsx
+function Layout() {
+  const isMobile = useIsMobile();
+
+  return (
+    <div className={isMobile ? "stack" : "grid"}>
+      <Sidebar />
+      <Content />
+    </div>
+  );
+}
+```
+
+### Custom Breakpoint
+
+```tsx
+function Component() {
+  const isLarge = useMediaQuery(1200);
+
+  return (
+    <div className={isLarge ? "columns-3" : "columns-2"}>
+      <Content />
+    </div>
+  );
+}
+```
+
+## Breakpoints
+
+- Mobile: 650px (useIsMobile)
+- Custom: any pixel value
+
+## Features
+
+- Window resize detection
+- Custom breakpoint support
+- Mobile detection utility
+- Cleanup on unmount

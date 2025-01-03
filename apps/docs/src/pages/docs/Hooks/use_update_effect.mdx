@@ -1,0 +1,65 @@
+# useUpdateEffect Hook
+
+Effect hook that skips the initial mount and only runs on updates.
+
+## Usage
+
+```tsx
+import { useUpdateEffect } from "@/hooks/use-update-effect";
+
+function Component({ value }) {
+  useUpdateEffect(() => {
+    console.log("Value updated:", value);
+  }, [value]);
+}
+```
+
+## Comparison with useEffect
+
+```tsx
+function ComparisonExample({ data }) {
+  // Runs on mount and updates
+  useEffect(() => {
+    console.log("Effect:", data);
+  }, [data]);
+
+  // Runs only on updates
+  useUpdateEffect(() => {
+    console.log("UpdateEffect:", data);
+  }, [data]);
+}
+```
+
+## Examples
+
+### Form Validation
+
+```tsx
+function Form() {
+  const [input, setInput] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  useUpdateEffect(() => {
+    validateInput(input).then(setErrors);
+  }, [input]);
+
+  return <input value={input} onChange={(e) => setInput(e.target.value)} />;
+}
+```
+
+### API Calls
+
+```tsx
+function DataFetcher({ query }) {
+  useUpdateEffect(() => {
+    // Skip initial fetch, only fetch on query updates
+    fetchData(query);
+  }, [query]);
+}
+```
+
+## Type Definition
+
+```tsx
+const useUpdateEffect: typeof useEffect;
+```

@@ -1,0 +1,64 @@
+# Page Container
+
+Wrapper component for consistent page layouts with responsive padding and spacing.
+
+## Usage
+
+```tsx
+import PageContainer from "@/components/page-container";
+
+<PageContainer>
+  <h1>Page Content</h1>
+  <p>More content...</p>
+</PageContainer>;
+```
+
+## Props
+
+| Name                   | Type        | Default  | Description                  |
+| ---------------------- | ----------- | -------- | ---------------------------- |
+| `children`             | `ReactNode` | Required | Page content                 |
+| `className`            | `string`    | -        | Additional container classes |
+| `classNames`           | `Object`    | -        | Component-specific classes   |
+| `classNames.base`      | `string`    | -        | Main wrapper classes         |
+| `classNames.container` | `string`    | -        | Inner container classes      |
+
+## Exported Constants
+
+```tsx
+export const pageBounds = "lg:px-10 px-6 w-full";
+export const breakOutOfContainer = "lg:-mx-10 -mx-6";
+```
+
+## Examples
+
+### Basic Usage
+
+```tsx
+<PageContainer>
+  <section>Page section</section>
+</PageContainer>
+```
+
+### Custom Styling
+
+```tsx
+<PageContainer
+  className='bg-gray-100'
+  classNames={{
+    base: "min-h-screen",
+    container: "gap-20",
+  }}
+>
+  <section>Custom styled content</section>
+</PageContainer>
+```
+
+## Features
+
+- Responsive padding: `lg:px-10 px-6`
+- Vertical spacing: `gap-10` between children
+- Desktop-only top spacer
+- Large bottom spacer: `y={60}`
+- Flex column layout
+- Full width container

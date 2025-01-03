@@ -1,0 +1,104 @@
+# Featured Carousel
+
+A responsive carousel component with featured content display for showcasing products, services, or portfolio items.
+
+## Installation
+
+```bash
+npm install @nextui-org/react embla-carousel-react
+```
+
+## Usage
+
+```tsx
+import { FeaturedCarousel } from "@/components/featured-carousel";
+import { Link } from "next/link";
+
+const items = [
+  {
+    id: 1,
+    name: "Featured Item",
+    description: "Amazing product description",
+    image_link: "/product.jpg",
+  },
+];
+
+export default function ShowcaseSection() {
+  return (
+    <FeaturedCarousel
+      Link={Link}
+      items={items}
+      link={{
+        prefix: "products",
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Name          | Type            | Description               |
+| ------------- | --------------- | ------------------------- |
+| `Link`        | `ComponentType` | Router Link component     |
+| `items`       | `Item[]`        | Array of items to display |
+| `buttonProps` | `ButtonProps`   | NextUI button props       |
+| `link`        | `LinkConfig`    | Link configuration        |
+
+### Item Interface
+
+```tsx
+type Item = {
+  id: number;
+  name: string;
+  description: string;
+  image_link: string;
+};
+```
+
+## Examples
+
+### Single Item
+
+```tsx
+<FeaturedCarousel
+  Link={Link}
+  items={[singleItem]}
+  link={{ prefix: "product" }}
+/>
+```
+
+### Custom Button
+
+```tsx
+<FeaturedCarousel
+  Link={Link}
+  items={items}
+  buttonProps={{
+    color: "secondary",
+    children: "View Details",
+  }}
+/>
+```
+
+### Custom Links
+
+```tsx
+<FeaturedCarousel
+  Link={Link}
+  items={items}
+  link={{
+    href: "/custom/path",
+    prefix: "category",
+    suffix: "details",
+  }}
+/>
+```
+
+## Features
+
+- Image carousel with navigation
+- Responsive layout
+- Progress indicators
+- Dynamic link generation
+- Customizable styling

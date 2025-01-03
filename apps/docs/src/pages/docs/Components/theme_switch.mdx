@@ -1,0 +1,59 @@
+# Theme Switch
+
+Toggle button component for switching between light and dark themes.
+
+## Import
+
+```tsx
+import { ThemeSwitch } from "@/components/theme-switch";
+```
+
+## Usage
+
+```tsx
+// Basic usage
+<ThemeSwitch />
+
+// In header/navbar
+<nav>
+  <div className="flex items-center gap-2">
+    <ThemeSwitch />
+    <OtherNavItems />
+  </div>
+</nav>
+```
+
+## Features
+
+- Instant theme switching
+- Icon transitions between Sun/Moon
+- Accessible button with screen reader text
+- NextUI Button component integration
+- Lucide React icons
+
+## Implementation
+
+Uses the `useTheme` hook to manage theme state:
+
+```tsx
+const { theme, setTheme } = useTheme();
+```
+
+Theme values:
+
+- `light`: Shows moon icon
+- `dark`: Shows sun icon
+
+## Styling
+
+- Button uses NextUI's `light` variant
+- Small (`sm`) size
+- Icon-only mode
+- Icons sized at `h-4 w-4`
+- Includes screen reader accessible text
+
+## Dependencies
+
+- @nextui-org/react
+- lucide-react
+- useTheme custom hook

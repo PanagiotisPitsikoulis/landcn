@@ -1,0 +1,117 @@
+# AnimatedWrapper
+
+The `AnimatedWrapper` is a flexible React component built using [Framer Motion](https://www.framer.com/motion/) that adds animations to its children. It also provides an optional feature to trigger animations when the component comes into view using the Intersection Observer API.
+
+## Props
+
+### `children` (required)
+
+- **Type:** `React.ReactNode`
+- The child elements to wrap with the animated wrapper.
+
+### `left`
+
+- **Type:** `number`
+- The distance to animate from the left (in pixels). Deprecated in favor of `rootMargin` and `threshold`.
+
+### `right`
+
+- **Type:** `number`
+- The distance to animate from the right (in pixels). Deprecated in favor of `rootMargin` and `threshold`.
+
+### `top`
+
+- **Type:** `number`
+- The distance to animate from the top (in pixels). Deprecated in favor of `rootMargin` and `threshold`.
+
+### `bottom`
+
+- **Type:** `number`
+- The distance to animate from the bottom (in pixels). Deprecated in favor of `rootMargin` and `threshold`.
+
+### `opacity`
+
+- **Type:** `number`
+- The target opacity of the animation. Default is `1`.
+
+### `duration`
+
+- **Type:** `number`
+- The duration of the animation in seconds. Default is `0.4`.
+
+### `delay`
+
+- **Type:** `number`
+- The delay before the animation starts in seconds. Default is `0`.
+
+### `ease`
+
+- **Type:** `string | number[]`
+- The easing function for the animation. Default is `"easeOut"`.
+
+### `initialOpacity`
+
+- **Type:** `number`
+- The initial opacity of the element before the animation starts. Default is `0`.
+
+### `triggerOnView`
+
+- **Type:** `boolean`
+- If `true`, the animation is triggered when the component comes into view.
+
+### `rootMargin`
+
+- **Type:** `string`
+- The margin around the root element for intersection detection. Default is `"0px"`.
+
+### `threshold`
+
+- **Type:** `number | number[]`
+- The threshold(s) for triggering the intersection. Default is `0.5`.
+
+### `className`
+
+- **Type:** `string`
+- Additional class name for the wrapper element. Deprecated in favor of more dynamic positioning options.
+
+## Example Usage
+
+### Basic Animation
+
+```tsx
+import { AnimatedWrapper } from "./AnimatedWrapper";
+
+function Example() {
+  return (
+    <AnimatedWrapper left={50} duration={0.5} opacity={1} initialOpacity={0}>
+      <div style={{ width: "100px", height: "100px", background: "blue" }} />
+    </AnimatedWrapper>
+  );
+}
+```
+
+### Trigger Animation on View
+
+```tsx
+import { AnimatedWrapper } from "./AnimatedWrapper";
+
+function Example() {
+  return (
+    <AnimatedWrapper
+      triggerOnView={true}
+      rootMargin='-10px'
+      threshold={0.75}
+      duration={0.6}
+    >
+      <div style={{ width: "200px", height: "200px", background: "green" }} />
+    </AnimatedWrapper>
+  );
+}
+```
+
+## Notes
+
+- Deprecated props (`left`, `right`, `top`, `bottom`, `opacity`, etc.) are maintained for backward compatibility but should be replaced with `rootMargin` and `threshold` for a more robust experience.
+- Use the `triggerOnView` prop to create animations that respond to scroll events for a more dynamic and engaging UI.
+
+For more advanced configurations and animations, refer to the [Framer Motion documentation](https://www.framer.com/motion/).

@@ -1,0 +1,85 @@
+# Sheet Component
+
+Dialog overlay component with sliding animations and positioning variants.
+
+## Import
+
+```tsx
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/sheet";
+```
+
+## Examples
+
+### Basic Usage
+
+```tsx
+<Sheet>
+  <SheetTrigger>Open Sheet</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Sheet Title</SheetTitle>
+      <SheetDescription>Sheet Description</SheetDescription>
+    </SheetHeader>
+    <div>Content goes here</div>
+  </SheetContent>
+</Sheet>
+```
+
+### Position Variants
+
+```tsx
+// Right side (default)
+<SheetContent side="right">Content</SheetContent>
+
+// Left side
+<SheetContent side="left">Content</SheetContent>
+
+// Top
+<SheetContent side="top">Content</SheetContent>
+
+// Bottom
+<SheetContent side="bottom">Content</SheetContent>
+```
+
+## API Reference
+
+### Sheet
+
+Root component that manages dialog state.
+
+### SheetContent
+
+| Prop        | Type                                     | Default   | Description    |
+| ----------- | ---------------------------------------- | --------- | -------------- |
+| `side`      | `'top' \| 'right' \| 'bottom' \| 'left'` | `'right'` | Sheet position |
+| `className` | `string`                                 | -         | Custom classes |
+
+### SheetHeader
+
+Container for sheet title and description. Aligns center on mobile, left on desktop.
+
+### SheetFooter
+
+Container for action buttons. Stacks on mobile, inline on desktop.
+
+### SheetTitle
+
+Title component with semibold font and foreground color.
+
+### SheetDescription
+
+Description text with muted foreground color.
+
+## Styling
+
+- Uses Tailwind for animations and transitions
+- Responsive design with mobile considerations
+- Customizable via className props
+- Dark mode compatible

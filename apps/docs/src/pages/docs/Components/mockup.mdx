@@ -1,0 +1,53 @@
+# Device Preview Components
+
+SVG-based components for rendering browser and mobile device previews.
+
+## Safari Component
+
+Browser window preview component styled like Safari.
+
+```tsx
+<Safari width={1203} height={753} src='/screenshot.png' url='example.com' />
+```
+
+### Props
+
+| Prop     | Type     | Default | Description              |
+| -------- | -------- | ------- | ------------------------ |
+| `url`    | `string` | -       | URL shown in address bar |
+| `src`    | `string` | -       | Image source to display  |
+| `width`  | `number` | `1203`  | Component width          |
+| `height` | `number` | `753`   | Component height         |
+
+## iPhone Component
+
+iPhone 15 Pro style device preview frame.
+
+```tsx
+<Iphone width={433} height={882} src='/app-screenshot.png' />
+```
+
+### Props
+
+| Prop     | Type     | Default | Description             |
+| -------- | -------- | ------- | ----------------------- |
+| `src`    | `string` | -       | Screenshot image source |
+| `width`  | `number` | `433`   | Component width         |
+| `height` | `number` | `882`   | Component height        |
+
+## Features
+
+- Dark mode support via Tailwind classes
+- Responsive scaling
+- Maintains aspect ratios
+- Clip paths for rounded corners
+- SVG-based for sharp rendering
+
+## Styling
+
+Components use Tailwind CSS classes for theming:
+
+- Light mode frame colors: `fill-[#E5E5E5]`
+- Dark mode frame colors: `fill-[#404040]`
+- Light mode background: `fill-white`
+- Dark mode background: `fill-[#262626]`

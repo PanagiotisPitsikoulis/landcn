@@ -1,0 +1,76 @@
+# useScrollPosition Hook
+
+Track scroll position with throttling and element targeting support.
+
+## Usage
+
+```tsx
+import { useScrollPosition } from "@/hooks/use-scroll-position";
+
+function ScrollTracker() {
+  const position = useScrollPosition({
+    isEnabled: true,
+    delay: 100,
+  });
+
+  return <div>Scroll position: {position.y}px</div>;
+}
+```
+
+## Options
+
+```tsx
+interface UseScrollPositionOptions {
+  delay?: number; // Throttle delay (ms)
+  isEnabled?: boolean; // Enable/disable tracking
+  elementRef?: RefObject<HTMLElement>;
+  callback?: (data: { prevPos: ScrollValue; currPos: ScrollValue }) => void;
+}
+```
+
+## Examples
+
+### Track Specific Element
+
+```tsx
+function ElementScroll() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const position = useScrollPosition({
+    elementRef: containerRef,
+    callback: ({ currPos }) => {
+      console.log("Scrolled to:", currPos);
+    },
+  });
+
+  return (
+    <div ref={containerRef} style={{ height: "200px", overflow: "auto" }}>
+      <div style={{ height: "1000px" }}>Scrollable content</div>
+    </div>
+  );
+}
+```
+
+### Scroll Progress
+
+```tsx
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useScrollPosition({
+    callback: ({ currPos }) => {
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress((currPos.y / maxScroll) * 100);
+    },
+  });
+
+  return <ProgressBar value={progress} />;
+}
+```
+
+## Features
+
+- Window and element scroll tracking
+- Configurable throttling
+- TypeScript support
+- SSR compatible

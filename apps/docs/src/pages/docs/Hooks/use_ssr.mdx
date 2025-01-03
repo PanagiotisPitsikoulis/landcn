@@ -1,0 +1,65 @@
+# SSR Detection Hook
+
+Detect server-side rendering and browser environment.
+
+## Usage
+
+```tsx
+import { useSSR } from "@/hooks/use-ssr";
+
+function App() {
+  const { isBrowser, isServer } = useSSR();
+
+  return (
+    <div>
+      {isBrowser && <ClientOnlyComponent />}
+      {isServer && <ServerContent />}
+    </div>
+  );
+}
+```
+
+## Examples
+
+### Window Access
+
+```tsx
+function WindowComponent() {
+  const { isBrowser } = useSSR();
+
+  return (
+    <div>
+      {isBrowser ? (
+        <div>Window width: {window.innerWidth}</div>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
+  );
+}
+```
+
+### Hydration Safety
+
+```tsx
+function HydratedComponent() {
+  const { isBrowser } = useSSR();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (isBrowser) {
+      fetchClientData().then(setData);
+    }
+  }, [isBrowser]);
+
+  if (!isBrowser) return null;
+  return <div>{data}</div>;
+}
+```
+
+## Features
+
+- SSR detection
+- Browser environment check
+- Hydration handling
+- Type-safe state

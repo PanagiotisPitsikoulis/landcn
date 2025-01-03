@@ -1,0 +1,123 @@
+# FeaturesGrid
+
+A `FeaturesGrid` component designed to display a grid of feature cards. Each card can include a title, icon, description, and an optional link. The component is built with `@nextui-org/react` and styled using `tailwind-variants` for flexible customization.
+
+## Props
+
+### `features`
+
+- **Type:** `Feature[]`
+- **Required:** Yes
+- An array of features to display in the grid. Each feature has the following properties:
+  - `title`: The title of the feature card.
+  - `icon`: An icon to display in the feature card.
+  - `description` (optional): A description for the feature.
+  - `href` (optional): A URL for the feature card link.
+  - `isExternal` (optional): Indicates if the link is external.
+
+### `classNames`
+
+- **Type:** `SlotsToClasses<FeaturesGridSlots>`
+- **Required:** No
+- Custom class names for styling specific slots within the component.
+
+## Feature Object
+
+Each feature in the `features` array should have the following properties:
+
+### `title`
+
+- **Type:** `string`
+- **Required:** Yes
+- The title of the feature card.
+
+### `icon`
+
+- **Type:** `ReactNode`
+- **Required:** Yes
+- An icon to display at the top of the card.
+
+### `description`
+
+- **Type:** `string | ReactNode`
+- **Required:** No
+- A description or additional information about the feature.
+
+### `href`
+
+- **Type:** `string`
+- **Required:** No
+- URL to navigate to when the card is clicked.
+
+### `isExternal`
+
+- **Type:** `boolean`
+- **Required:** No
+- If `true`, a `LinkIcon` is shown, indicating the link opens in a new tab.
+
+## Example Usage
+
+### Basic Grid
+
+```tsx
+import { FeaturesGrid } from "./FeaturesGrid";
+import { HomeIcon, SettingsIcon } from "lucide-react";
+
+const features = [
+  {
+    title: "Home",
+    icon: <HomeIcon />,
+    description: "Navigate to the home page.",
+    href: "/home",
+  },
+  {
+    title: "Settings",
+    icon: <SettingsIcon />,
+    description: "Adjust your preferences.",
+    href: "/settings",
+    isExternal: true,
+  },
+];
+
+export default function Example() {
+  return <FeaturesGrid features={features} />;
+}
+```
+
+### Custom Styling
+
+```tsx
+const customClassNames = {
+  base: "grid-cols-3 gap-6",
+  card: "shadow-lg bg-gray-100",
+  iconWrapper: "bg-blue-200 text-blue-500",
+  title: "text-lg font-bold",
+  description: "text-sm text-gray-700",
+};
+
+export default function CustomGrid() {
+  return <FeaturesGrid features={features} classNames={customClassNames} />;
+}
+```
+
+## Slots Styling
+
+### Available Slots
+
+The `FeaturesGrid` component provides customizable slots for the following elements:
+
+- `base`: The grid container.
+- `card`: Each feature card.
+- `header`: The card header containing the icon and title.
+- `body`: The card body containing the description.
+- `iconWrapper`: The wrapper around the icon.
+- `title`: The feature title.
+- `description`: The feature description.
+
+You can use `classNames` to override the default styles for any slot.
+
+## Notes
+
+- The `FeaturesGrid` leverages `@nextui-org/react` components for cards and links.
+- Styling is powered by `tailwind-variants` for flexibility.
+- Ensure that all `href` links are valid and specify `isExternal` if they lead to an external site.

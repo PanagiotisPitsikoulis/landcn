@@ -1,0 +1,78 @@
+# Polymorphic Button
+
+A flexible button component that renders either as a link or button based on props.
+
+## Props
+
+| Name             | Type                  | Description                    |
+| ---------------- | --------------------- | ------------------------------ |
+| `href`           | `string`              | URL for link mode              |
+| `func`           | `() => Promise<void>` | Async function for button mode |
+| `isExternal`     | `boolean`             | Open link in new tab           |
+| `disableLoading` | `boolean`             | Disable loading state          |
+| `...ButtonProps` | `ButtonProps`         | NextUI Button props            |
+
+## Basic Usage
+
+```tsx
+// As a Link
+<PolymorphicButton
+  href="/dashboard"
+  color="primary"
+>
+  Go to Dashboard
+</PolymorphicButton>
+
+// As a Button
+<PolymorphicButton
+  func={async () => {
+    await saveData()
+  }}
+  color="primary"
+>
+  Save Data
+</PolymorphicButton>
+```
+
+## Advanced Examples
+
+```tsx
+// External Link
+<PolymorphicButton
+  href="https://example.com"
+  isExternal
+  color="secondary"
+>
+  External Link
+</PolymorphicButton>
+
+// Custom Loading State
+<PolymorphicButton
+  func={async () => {
+    await longOperation()
+  }}
+  disableLoading
+  color="primary"
+>
+  Custom Loading
+</PolymorphicButton>
+```
+
+## Edge Cases
+
+```tsx
+// No href or func - renders null
+<PolymorphicButton>
+  Won't Render
+</PolymorphicButton>
+
+// With NextUI Button Props
+<PolymorphicButton
+  href="/path"
+  color="primary"
+  size="sm"
+  variant="flat"
+>
+  Styled Button
+</PolymorphicButton>
+```

@@ -1,0 +1,103 @@
+# Landing Section Component
+
+A flexible section component for landing pages with text, content, and animation support.
+
+## Basic Usage
+
+```tsx
+<LandingSection
+  landingTextProps={{
+    title: "Welcome",
+    subtitle: "Start your journey",
+  }}
+  orientation='center'
+  content={<YourContent />}
+/>
+```
+
+## Props
+
+| Name                   | Type                            | Default    | Description                |
+| ---------------------- | ------------------------------- | ---------- | -------------------------- |
+| `orientation`          | `'left' \| 'center' \| 'right'` | `'center'` | Layout orientation         |
+| `landingTextProps`     | `LandingTextProps`              | Required   | Text content configuration |
+| `content`              | `ReactNode`                     | -          | Optional content section   |
+| `contentBottom`        | `boolean`                       | `false`    | Forces content below text  |
+| `className`            | `string`                        | -          | Container class name       |
+| `classNames`           | `Object`                        | `{}`       | Component-specific classes |
+| `animatedWrapperProps` | `Object`                        | -          | Animation configuration    |
+
+## Orientation Variants
+
+```tsx
+// Left-aligned
+<LandingSection
+  orientation="left"
+  landingTextProps={{
+    title: "Left Aligned",
+    subtitle: "Content on right"
+  }}
+  content={<div>Content</div>}
+/>
+
+// Center-aligned
+<LandingSection
+  orientation="center"
+  landingTextProps={{
+    title: "Centered",
+    subtitle: "Content below"
+  }}
+  content={<div>Content</div>}
+/>
+
+// Right-aligned
+<LandingSection
+  orientation="right"
+  landingTextProps={{
+    title: "Right Aligned",
+    subtitle: "Content on left"
+  }}
+  content={<div>Content</div>}
+/>
+```
+
+## Animation Configuration
+
+```tsx
+<LandingSection
+  animatedWrapperProps={{
+    animatedWrapperPropsContainer: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+    },
+    animatedWrapperPropsText: {
+      initial: { y: 20 },
+      animate: { y: 0 },
+    },
+    animatedWrapperPropsContent: {
+      initial: { x: -20 },
+      animate: { x: 0 },
+    },
+  }}
+/>
+```
+
+## Style Customization
+
+```tsx
+<LandingSection
+  className='bg-gray-100'
+  classNames={{
+    container: "custom-container",
+    contentWrapper: "custom-content",
+    textWrapper: "custom-text",
+  }}
+/>
+```
+
+## Responsive Behavior
+
+- Automatically switches to mobile layout on small screens
+- Content moves below text on mobile regardless of orientation
+- Maintains text alignment based on orientation
+- Adjusts padding and spacing for mobile views

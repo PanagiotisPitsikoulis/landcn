@@ -1,0 +1,142 @@
+# GradientBox
+
+The `GradientBox` component creates a customizable box with gradient backgrounds, rounded corners, shadows, and flexible alignment options. It's built using `tailwind-variants` for efficient styling and variant management.
+
+## Props
+
+### `children`
+
+- **Type:** `ReactNode`
+- **Required:** No
+- Content to display inside the gradient box.
+
+### `className`
+
+- **Type:** `string`
+- **Required:** No
+- Additional CSS classes to apply to the gradient box.
+
+### Variants
+
+The `GradientBox` supports the following style variants:
+
+#### `to`
+
+- **Type:** `"top" | "right" | "left" | "bottom" | "top-right" | "top-left" | "bottom-right" | "bottom-left"`
+- **Default:** `"top-right"`
+- Determines the direction of the gradient.
+
+#### `color`
+
+- **Type:** `"orange" | "green" | "pink"`
+- **Default:** None
+- Specifies the gradient colors:
+  - `orange`: From `#FFB457` to `#FF705B`
+  - `green`: From `#4ADE80` to `#06B6D4`
+  - `pink`: From `#FF72E1` to `#F54C7A`
+
+#### `radius`
+
+- **Type:** `"none" | "sm" | "lg" | "xl" | "2xl" | "3xl"`
+- **Default:** `"2xl"`
+- Specifies the border-radius of the gradient box.
+
+#### `shadow`
+
+- **Type:** `"none" | "sm" | "lg" | "xl" | "2xl" | "3xl"`
+- **Default:** `"none"`
+- Specifies the box shadow level.
+
+#### `isCentered`
+
+- **Type:** `boolean`
+- **Default:** `false`
+- If `true`, centers the content horizontally and vertically.
+
+## Example Usage
+
+### Basic Gradient Box
+
+```tsx
+import { GradientBox } from "./GradientBox";
+
+export default function Example() {
+  return (
+    <GradientBox color='pink' to='top-right'>
+      <p className='text-white'>Hello, Gradient!</p>
+    </GradientBox>
+  );
+}
+```
+
+### Customized Gradient Box
+
+```tsx
+import { GradientBox } from "./GradientBox";
+
+export default function CustomExample() {
+  return (
+    <GradientBox
+      color='green'
+      to='bottom'
+      radius='lg'
+      shadow='lg'
+      isCentered
+      className='p-6'
+    >
+      <h1 className='text-2xl font-bold text-white'>Custom Gradient</h1>
+    </GradientBox>
+  );
+}
+```
+
+## Variants and Customization
+
+### `to`
+
+Defines the direction of the gradient.
+
+- `"top"`: Gradient flows upwards.
+- `"right"`: Gradient flows to the right.
+- `"bottom"`: Gradient flows downwards.
+- `"left"`: Gradient flows to the left.
+- `"top-right"`: Gradient flows diagonally to the top-right.
+
+### `color`
+
+Choose from predefined gradient color schemes:
+
+- **Orange:** From `#FFB457` to `#FF705B`
+- **Green:** From `#4ADE80` to `#06B6D4`
+- **Pink:** From `#FF72E1` to `#F54C7A`
+
+### `radius`
+
+Specifies the border-radius of the box. Available values are:
+
+- `none`: No rounding.
+- `sm`: Small rounding.
+- `lg`: Large rounding.
+- `xl`: Extra-large rounding.
+- `2xl`: Twice extra-large rounding.
+- `3xl`: Triple extra-large rounding.
+
+### `shadow`
+
+Adds a shadow to the box with varying intensity:
+
+- `none`: No shadow.
+- `sm`: Small shadow.
+- `lg`: Large shadow.
+- `xl`: Extra-large shadow.
+- `2xl`: Twice extra-large shadow.
+- `3xl`: Triple extra-large shadow.
+
+### `isCentered`
+
+- If set to `true`, centers the content within the box using `items-center` and `justify-center`.
+
+## Notes
+
+- The `GradientBox` leverages `tailwind-variants` for consistent and reusable styling.
+- Extend or override styles by providing a custom `className`.

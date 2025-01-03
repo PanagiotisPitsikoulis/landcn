@@ -1,0 +1,80 @@
+# Event Emitter
+
+Application-wide event emitter based on mitt for state management and cross-component communication.
+
+## Installation
+
+```bash
+npm install mitt
+```
+
+## Usage
+
+```tsx
+import emitter from "@/hooks/emitter";
+
+// Emit event
+emitter.emit("bannerVisibilityChange", "hidden");
+
+// Subscribe to event
+emitter.on("bannerVisibilityChange", (state) => {
+  console.log("Banner is now:", state);
+});
+```
+
+## Event Types
+
+```tsx
+type Events = {
+  bannerVisibilityChange: "hidden" | "visible";
+};
+```
+
+## Examples
+
+### Component Communication
+
+```tsx
+// Sender Component
+function Banner() {
+  const hideBanner = () => {
+    emitter.emit("bannerVisibilityChange", "hidden");
+  };
+
+  return <button onClick={hideBanner}>Hide</button>;
+}
+
+// Receiver Component
+function Header() {
+  useEffect(() => {
+    const handler = (state: "hidden" | "visible") => {
+      // Handle state change
+    };
+
+    emitter.on("bannerVisibilityChange", handler);
+    return () => emitter.off("bannerVisibilityChange", handler);
+  }, []);
+
+  return <header>...</header>;
+}
+```
+
+### Cleanup
+
+```tsx
+// Always remove listeners
+useEffect(() => {
+  const handler = (state) => {
+    /* ... */
+  };
+  emitter.on("bannerVisibilityChange", handler);
+  return () => emitter.off("bannerVisibilityChange", handler);
+}, []);
+```
+
+## Features
+
+- Type-safe events
+- Zero dependencies
+- Small bundle size
+- Simple API

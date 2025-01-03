@@ -1,0 +1,61 @@
+# Animated Image Grid
+
+A responsive grid component that displays images with smooth animations and automatic shuffling.
+
+## Installation
+
+```bash
+npm install framer-motion class-variance-authority
+```
+
+## Usage
+
+```tsx
+import { AnimatedImageGrid } from "@/components/animated-image-grid";
+
+export default function Gallery() {
+  return (
+    <AnimatedImageGrid
+      images={["/image1.jpg", "/image2.jpg", "/image3.jpg", "/image4.jpg"]}
+      shuffleInterval={3000}
+    />
+  );
+}
+```
+
+## Props
+
+| Name               | Type       | Default  | Description                |
+| ------------------ | ---------- | -------- | -------------------------- |
+| `images`           | `string[]` | Required | Array of image URLs        |
+| `className`        | `string`   | -        | Container class            |
+| `classNames`       | `Object`   | `{}`     | Component specific classes |
+| `shuffleInterval`  | `number`   | `3000`   | Shuffle timing (ms)        |
+| `disableAnimation` | `boolean`  | `false`  | Disable animations         |
+
+## Examples
+
+### Basic Grid
+
+```tsx
+<AnimatedImageGrid images={["/img1.jpg", "/img2.jpg"]} />
+```
+
+### Custom Styling
+
+```tsx
+<AnimatedImageGrid
+  images={images}
+  className='gap-6'
+  classNames={{
+    container: "bg-gray-100 p-4",
+    image: "rounded-xl",
+  }}
+/>
+```
+
+### Static Grid
+
+```tsx
+<AnimatedImageGrid images={images} disableAnimation={true} />
+```

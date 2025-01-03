@@ -1,0 +1,71 @@
+# useIsOnScreen Hook
+
+React hook utilizing IntersectionObserver to detect element visibility in viewport.
+
+## Usage
+
+```tsx
+import { useIsOnScreen } from "@/hooks/use-is-on-screen";
+
+function Component() {
+  const [ref, isVisible] = useIsOnScreen();
+
+  return <div ref={ref}>{isVisible ? "Visible" : "Hidden"}</div>;
+}
+```
+
+## Options
+
+```tsx
+const [ref, isVisible] = useIsOnScreen({
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5,
+});
+```
+
+## Examples
+
+### Infinite Scroll
+
+```tsx
+function InfiniteList() {
+  const [ref, isVisible] = useIsOnScreen();
+
+  useEffect(() => {
+    if (isVisible) {
+      loadMoreItems();
+    }
+  }, [isVisible]);
+
+  return (
+    <div>
+      <ItemList />
+      <div ref={ref}>Loading...</div>
+    </div>
+  );
+}
+```
+
+### Lazy Loading
+
+```tsx
+function LazyImage() {
+  const [ref, isVisible] = useIsOnScreen({
+    threshold: 0.1,
+  });
+
+  return (
+    <img ref={ref} src={isVisible ? "/image.jpg" : ""} alt='Lazy loaded' />
+  );
+}
+```
+
+## Type Parameters
+
+```tsx
+function Example<T extends HTMLElement>() {
+  const [ref, isVisible] = useIsOnScreen<T>();
+  return <div ref={ref} />;
+}
+```

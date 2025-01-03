@@ -1,0 +1,104 @@
+# Sidebar Component
+
+Flexible sidebar navigation system with mobile support and multiple variants.
+
+## Core Components
+
+```tsx
+import {
+  Sidebar,
+  SidebarProvider,
+  SidebarContent,
+  SidebarMenu,
+  SidebarMenuItem,
+} from "@/components/sidebar";
+
+<SidebarProvider>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarMenu>
+        <SidebarMenuItem>{/* Menu items */}</SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarContent>
+  </Sidebar>
+</SidebarProvider>;
+```
+
+## Features
+
+- Collapsible sidebar with keyboard shortcuts (⌘+B)
+- Mobile responsive with sheet overlay
+- Multiple variants: sidebar, floating, inset
+- Customizable width and animations
+- Dark mode support
+- Nested menu support
+
+## Provider Props
+
+| Name           | Type                      | Default | Description           |
+| -------------- | ------------------------- | ------- | --------------------- |
+| `defaultOpen`  | `boolean`                 | `true`  | Initial sidebar state |
+| `open`         | `boolean`                 | -       | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | -       | Open state handler    |
+
+## Sidebar Props
+
+| Name          | Type                                 | Default       | Description       |
+| ------------- | ------------------------------------ | ------------- | ----------------- |
+| `side`        | `'left' \| 'right'`                  | `'left'`      | Sidebar position  |
+| `variant`     | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'`   | Visual variant    |
+| `collapsible` | `'offcanvas' \| 'icon' \| 'none'`    | `'offcanvas'` | Collapse behavior |
+
+## Menu Examples
+
+```tsx
+// Basic Menu
+<SidebarMenu>
+  <SidebarMenuItem>
+    <SidebarMenuButton>
+      <HomeIcon />
+      <span>Home</span>
+    </SidebarMenuButton>
+  </SidebarMenuItem>
+</SidebarMenu>
+
+// With Submenu
+<SidebarMenu>
+  <SidebarMenuItem>
+    <SidebarMenuButton>
+      <FolderIcon />
+      <span>Projects</span>
+    </SidebarMenuButton>
+    <SidebarMenuSub>
+      <SidebarMenuSubItem>
+        <SidebarMenuSubButton>Project 1</SidebarMenuSubButton>
+      </SidebarMenuSubItem>
+    </SidebarMenuSub>
+  </SidebarMenuItem>
+</SidebarMenu>
+
+// With Actions
+<SidebarMenuItem>
+  <SidebarMenuButton>
+    <span>Settings</span>
+  </SidebarMenuButton>
+  <SidebarMenuAction>
+    <SettingsIcon />
+  </SidebarMenuAction>
+</SidebarMenuItem>
+```
+
+## Configuration Constants
+
+```tsx
+const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH_MOBILE = "18rem";
+const SIDEBAR_WIDTH_ICON = "3rem";
+const SIDEBAR_KEYBOARD_SHORTCUT = "b";
+```
+
+## Context Hook
+
+```tsx
+const { state, open, setOpen, isMobile, toggleSidebar } = useSidebar();
+```

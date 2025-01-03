@@ -1,0 +1,105 @@
+# Landing Text
+
+Responsive text component for landing pages with configurable size and orientation.
+
+## Usage
+
+```tsx
+import { LandingText } from "@/components/landing-text";
+
+<LandingText
+  title='Welcome'
+  subtitle='Start your journey'
+  size='md'
+  orientation='center'
+/>;
+```
+
+## Props
+
+| Prop            | Type                            | Default    | Description     |
+| --------------- | ------------------------------- | ---------- | --------------- |
+| `title`         | `ReactNode`                     | -          | Main heading    |
+| `subtitle`      | `ReactNode`                     | -          | Subheading      |
+| `orientation`   | `'left' \| 'center' \| 'right'` | `'center'` | Text alignment  |
+| `size`          | `'sm' \| 'md' \| 'lg'`          | `'md'`     | Component scale |
+| `topContent`    | `ReactNode`                     | -          | Above title     |
+| `bottomContent` | `ReactNode`                     | -          | Below subtitle  |
+| `className`     | `string`                        | -          | Root class      |
+| `classNames`    | `ClassNames`                    | `{}`       | Element classes |
+
+## Size Variants
+
+```tsx
+// Small
+<LandingText
+  size="sm"
+  title="Compact Header"
+  subtitle="Small variant for tight spaces"
+/>
+
+// Medium
+<LandingText
+  size="md"
+  title="Standard Header"
+  subtitle="Default medium size"
+/>
+
+// Large
+<LandingText
+  size="lg"
+  title="Hero Header"
+  subtitle="Large impactful text"
+/>
+```
+
+## Orientation
+
+```tsx
+// Left
+<LandingText
+  orientation="left"
+  title="Left Aligned"
+  subtitle="Text aligns to the left"
+/>
+
+// Center
+<LandingText
+  orientation="center"
+  title="Centered"
+  subtitle="Text aligns to the center"
+/>
+
+// Right
+<LandingText
+  orientation="right"
+  title="Right Aligned"
+  subtitle="Text aligns to the right"
+/>
+```
+
+## Custom Content
+
+```tsx
+<LandingText
+  topContent={<Badge>New</Badge>}
+  title='Main Title'
+  subtitle='Subtitle text'
+  bottomContent={<Button>Call to Action</Button>}
+  classNames={{
+    container: "my-custom-container",
+    title: "my-custom-title",
+    subtitle: "my-custom-subtitle",
+  }}
+/>
+```
+
+## Responsive Behavior
+
+- Text sizes scale based on breakpoints
+- Widths adjust automatically:
+  - Mobile: 100%
+  - Tablet: 75%
+  - Desktop: 50%
+- Font sizes increase with viewport
+- Maintains alignment across screen sizes

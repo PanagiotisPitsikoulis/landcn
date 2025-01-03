@@ -1,0 +1,181 @@
+# DataTable
+
+A highly customizable and accessible DataTable component designed for React applications. It supports sorting, filtering, pagination, and column visibility toggling.
+
+## Components Exported
+
+- **`DataTable`**
+- **`TableTopContent`**
+
+---
+
+## DataTable Props
+
+### `tableTopContentProps`
+
+- **Type:** `Partial<TableTopContentProps>`
+- Props for the `TableTopContent` component, managing table header controls.
+
+### `ariaLabel`
+
+- **Type:** `string`
+- Accessible label for the table.
+
+### `columns`
+
+- **Type:** `Column[]`
+- Array of column definitions. Each column has:
+  - **`key`**: Unique identifier for the column.
+  - **`label`**: Display label for the column.
+  - **`allowSorting`** (optional): If true, enables sorting for the column.
+
+### `data`
+
+- **Type:** `T[]`
+- Array of data items to display in the table.
+
+### `tableBodyProps`
+
+- **Type:** `Partial<TableBodyProps<T>>`
+- Props passed to the `TableBody` component.
+
+### `renderCell`
+
+- **Type:** `(item: T, columnKey: React.Key) => React.ReactNode`
+- Function to render the content of a table cell.
+
+### `tableRowProps`
+
+- **Type:** `Partial<TableRowProps>`
+- Props passed to the `TableRow` component.
+
+### `tableProps`
+
+- **Type:** `NextTableProps`
+- Props passed to the `NextTable` component.
+
+### `paginationProps`
+
+- **Type:** `Partial<PaginationProps>`
+- Props passed to the `Pagination` component.
+
+### `tableHeaderProps`
+
+- **Type:** `Partial<TableHeaderProps<T>>`
+- Props passed to the `TableHeader` component.
+
+### `itemsPerPage`
+
+- **Type:** `number`
+- Number of items to display per page. Defaults to `40`.
+
+### `disableSearch`
+
+- **Type:** `boolean`
+- If true, disables the search functionality.
+
+### `disablePagination`
+
+- **Type:** `boolean`
+- If true, disables the pagination functionality. Displays all items on a single page.
+
+---
+
+## TableTopContent Props
+
+### `disableSearch`
+
+- **Type:** `boolean`
+- If true, disables the search bar.
+
+### `filterValue`
+
+- **Type:** `string`
+- Current filter value.
+
+### `onClearSearch`
+
+- **Type:** `() => void`
+- Callback to clear the search input.
+
+### `onSearchChange`
+
+- **Type:** `(value: string) => void`
+- Callback triggered when the search value changes.
+
+### `visibleColumns`
+
+- **Type:** `Set<string>`
+- Set of currently visible column keys.
+
+### `setVisibleColumns`
+
+- **Type:** `React.Dispatch<React.SetStateAction<Set<string>>>`
+- Function to update visible columns.
+
+### `text`
+
+- **Type:** `{ search: string }`
+- Text labels for the component. Default: `{ search: "Search" }`.
+
+### `columns`
+
+- **Type:** `Column[]`
+- Array of columns used in the table.
+
+---
+
+## Example Usage
+
+### Basic DataTable
+
+```tsx
+import { DataTable } from "./DataTable";
+
+const columns = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name", allowSorting: true },
+  { key: "email", label: "Email" },
+];
+
+const data = [
+  { id: 1, name: "John Doe", email: "john@example.com" },
+  { id: 2, name: "Jane Smith", email: "jane@example.com" },
+];
+
+export default function Example() {
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      renderCell={(item, columnKey) => item[columnKey]}
+    />
+  );
+}
+```
+
+---
+
+## Features
+
+- **Pagination:** Paginate data with customizable controls.
+- **Search:** Built-in search for filtering table rows.
+- **Column Visibility:** Show or hide columns dynamically.
+- **Custom Renderers:** Flexibly render table cells based on data.
+- **Accessibility:** Fully ARIA-compliant for screen readers.
+
+---
+
+## Utilities
+
+### `cn`
+
+- Utility for conditionally combining class names.
+- Used for styling components dynamically.
+
+---
+
+## Notes
+
+1. Ensure `@nextui-org/react` is installed in your project.
+2. The `DataTable` is designed to be flexible and extensible for various use cases.

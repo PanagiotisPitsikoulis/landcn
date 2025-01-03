@@ -1,0 +1,50 @@
+# Virtual Anchor
+
+Dynamic anchor link component with automatic ID generation.
+
+## Installation
+
+```tsx
+import { VirtualAnchor } from "@/components/virtual-anchor";
+```
+
+## Props
+
+| Name       | Type        | Default | Description      |
+| ---------- | ----------- | ------- | ---------------- |
+| `id`       | `string`    | -       | Custom anchor ID |
+| `children` | `ReactNode` | -       | Link content     |
+
+## Usage
+
+```tsx
+// Basic usage
+<VirtualAnchor>Section Title</VirtualAnchor>
+
+// With custom ID
+<VirtualAnchor id="custom-id">
+  Custom Section
+</VirtualAnchor>
+
+// In headings
+<h2>
+  <VirtualAnchor>
+    Auto-linked Heading
+  </VirtualAnchor>
+</h2>
+```
+
+## Helper Function
+
+```tsx
+virtualAnchorEncode("My Section"); // Returns: "my-section"
+virtualAnchorEncode("Hello World!"); // Returns: "hello-world"
+```
+
+## Features
+
+- Automatic ID generation from content
+- Custom ID override
+- URL-safe encoding
+- Hover state handling
+- NextUI Link integration

@@ -1,0 +1,65 @@
+# Preview Component
+
+A component that renders content in an isolated iframe with style injection and responsive height adjustment.
+
+## Installation
+
+```bash
+npm install @repo/ui
+```
+
+## Usage
+
+The Preview component allows you to render React components in an isolated environment:
+
+```tsx
+import { Preview } from "@repo/ui";
+
+<Preview>
+  <YourComponent />
+</Preview>;
+```
+
+## Props
+
+| Prop      | Type       | Default | Description                             |
+| --------- | ---------- | ------- | --------------------------------------- |
+| children  | React.Node | -       | Content to render in the preview iframe |
+| className | string     | -       | Optional CSS class name for styling     |
+
+## Examples
+
+### Basic Usage
+
+```tsx live
+<Preview>
+  <div className='p-4 bg-blue-500 text-white'>Hello from Preview!</div>
+</Preview>
+```
+
+### With Custom Styling
+
+```tsx live
+<Preview className='min-h-[200px]'>
+  <div className='p-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white'>
+    Styled Preview Component
+  </div>
+</Preview>
+```
+
+## Technical Details
+
+The Preview component:
+
+- Creates an isolated iframe environment
+- Injects current document styles
+- Handles responsive height adjustment
+- Uses React portals for content mounting
+- Cleans up resources on unmount
+
+## Implementation Notes
+
+- Uses ResizeObserver for responsive height
+- Handles CORS-compliant style injection
+- Maintains proper cleanup of observers and portals
+- Supports custom styling via className prop

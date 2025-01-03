@@ -1,0 +1,71 @@
+# Installation
+
+## Quick Start
+
+```bash
+npm install land.cn
+# or
+yarn add land.cn
+# or
+pnpm add land.cn
+```
+
+## Required Dependencies
+
+```bash
+npm install tailwindcss postcss autoprefixer
+npm install @radix-ui/react-* @next-ui/org/react lucide-react
+```
+
+## Setup Tailwind CSS
+
+```ts
+// filepath: tailwind.config.ts
+import { withLanding } from "land.cn/config";
+
+export default withLanding({
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+  ],
+});
+```
+
+## Add Base Styles
+
+```css
+// filepath: app/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --landing-radius: 0.5rem;
+  }
+}
+```
+
+## Configure Components
+
+```ts
+// filepath: components/ui/index.ts
+export * from "land.cn/components";
+```
+
+## Verify Installation
+
+```tsx
+import { Button } from "land.cn";
+
+export default function Page() {
+  return <Button>I'm Working!</Button>;
+}
+```
+
+## Next Steps
+
+- Browse Components
+- View Examples
+- Configuration

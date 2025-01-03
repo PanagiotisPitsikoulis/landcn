@@ -1,0 +1,185 @@
+# Chart Components
+
+A comprehensive set of chart components leveraging the `recharts` library. These components are designed to be modular, customizable, and styled dynamically based on themes.
+
+## Exports
+
+The following components are exported:
+
+- `ChartContainer`
+- `ChartTooltip`
+- `ChartTooltipContent`
+- `ChartLegend`
+- `ChartLegendContent`
+- `ChartStyle`
+
+## ChartContainer
+
+### Props
+
+- **`config`**  
+  **Type:** `ChartConfig`  
+  Configuration object for chart labels, icons, and colors.
+
+- **`children`**  
+  **Type:** React nodes  
+  The child components to render within the chart.
+
+- **`className`**  
+  **Type:** `string`  
+  Additional class names for the container.
+
+- **`id`**  
+  **Type:** `string` (optional)  
+  Unique identifier for the chart container. Defaults to a generated ID.
+
+### Example
+
+```tsx
+import { ChartContainer } from "./Chart";
+
+export default function ExampleChart() {
+  const config = {
+    revenue: { color: "#4CAF50", label: "Revenue" },
+    expenses: { color: "#F44336", label: "Expenses" },
+  };
+
+  return (
+    <ChartContainer config={config}>
+      {/* Your Recharts components go here */}
+    </ChartContainer>
+  );
+}
+```
+
+## ChartTooltip
+
+### Description
+
+Wraps the Recharts `Tooltip` component to provide contextual information for chart data points.
+
+### Example
+
+```tsx
+import { ChartTooltip } from "./Chart";
+
+<ChartTooltip
+  formatter={(value, name) => [`$${value}`, name]}
+  labelFormatter={(label) => `Date: ${label}`}
+/>;
+```
+
+## ChartTooltipContent
+
+### Props
+
+- **`hideLabel`**  
+  **Type:** `boolean`  
+  Whether to hide the tooltip label.
+
+- **`hideIndicator`**  
+  **Type:** `boolean`  
+  Whether to hide the color indicator.
+
+- **`indicator`**  
+  **Type:** `'line' | 'dot' | 'dashed'`  
+  Style of the color indicator.
+
+- **`formatter`**  
+  **Type:** `(value, name, item, index, payload) => React.ReactNode`  
+  Function to format the value displayed in the tooltip.
+
+### Example
+
+```tsx
+import { ChartTooltipContent } from "./Chart";
+
+<ChartTooltipContent
+  formatter={(value) => `$${value}`}
+  hideIndicator={false}
+/>;
+```
+
+## ChartLegend
+
+### Description
+
+Wraps the Recharts `Legend` component, providing customization options for icons and labels.
+
+### Example
+
+```tsx
+import { ChartLegend } from "./Chart";
+
+<ChartLegend
+  payload={[
+    { value: "Revenue", color: "#4CAF50" },
+    { value: "Expenses", color: "#F44336" },
+  ]}
+/>;
+```
+
+## ChartLegendContent
+
+### Props
+
+- **`payload`**  
+  **Type:** Array of legend items  
+  Specifies the data to display in the legend.
+
+- **`hideIcon`**  
+  **Type:** `boolean`  
+  Whether to hide icons next to legend labels.
+
+### Example
+
+```tsx
+import { ChartLegendContent } from "./Chart";
+
+<ChartLegendContent
+  payload={[
+    { value: "Revenue", color: "#4CAF50" },
+    { value: "Expenses", color: "#F44336" },
+  ]}
+/>;
+```
+
+## ChartStyle
+
+### Description
+
+Applies dynamic styles to chart components based on theme or custom colors defined in the configuration.
+
+### Example
+
+```tsx
+import { ChartStyle } from "./Chart";
+
+<ChartStyle
+  id='my-chart'
+  config={{ revenue: { theme: { light: "#4CAF50", dark: "#2E7D32" } } }}
+/>;
+```
+
+## Utilities
+
+### `useChart`
+
+Hook to access the chart context. Throws an error if used outside `ChartContainer`.
+
+### Example
+
+```tsx
+import { useChart } from "./Chart";
+
+function Example() {
+  const { config } = useChart();
+  console.log(config);
+}
+```
+
+## Notes
+
+- Ensure `recharts` is installed and properly configured in your project.
+- The `THEMES` constant allows dynamic styling for light and dark modes.
+- Use the `getPayloadConfigFromPayload` utility to extract configurations for tooltip and legend items.

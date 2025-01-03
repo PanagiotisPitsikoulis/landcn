@@ -1,0 +1,75 @@
+# usePersistantState Hook
+
+Cookie-based state persistence hook for React applications.
+
+## Usage
+
+```tsx
+import { usePersistantState } from "@/hooks/use-persistant-state";
+
+function App() {
+  const [theme, setTheme] = usePersistantState("theme", "light");
+
+  return (
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      Toggle Theme
+    </button>
+  );
+}
+```
+
+## Type Safety
+
+```tsx
+type Theme = "light" | "dark";
+
+function App() {
+  const [theme, setTheme] = usePersistantState<Theme>("theme", "light");
+  return <div data-theme={theme}>...</div>;
+}
+```
+
+## Examples
+
+### With Complex Objects
+
+```tsx
+interface UserPreferences {
+  fontSize: number;
+  language: string;
+}
+
+function Settings() {
+  const [prefs, setPrefs] = usePersistantState<UserPreferences>("prefs", {
+    fontSize: 16,
+    language: "en",
+  });
+
+  return (
+    <div>
+      <select
+        value={prefs.language}
+        onChange={(e) => setPrefs({ ...prefs, language: e.target.value })}
+      >
+        <option value='en'>English</option>
+        <option value='es'>Spanish</option>
+      </select>
+    </div>
+  );
+}
+```
+
+### Custom Cookie Age
+
+```tsx
+// Session-only persistence
+const [value, setValue] = usePersistantState("key", "value", 3600); // 1 hour
+```
+
+## Features
+
+- Type-safe state management
+- Cookie-based persistence
+- Automatic JSON serialization
+- Error boundary handling
+- SSR compatibility

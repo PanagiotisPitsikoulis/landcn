@@ -1,0 +1,76 @@
+# Background Container
+
+The `BackgroundContainer` is a React component that wraps its children with a customizable background image. It provides flexibility in styling and allows for additional class customization.
+
+## Props
+
+### `children` (required)
+
+- **Type:** `React.ReactNode`
+- The child elements to render inside the container.
+
+### `background`
+
+- **Type:** `string`
+- The URL for the background image.
+- **Default:** `"/gradients/looper-pattern.svg"`
+
+### `className`
+
+- **Type:** `string`
+- Additional class name for the outer container.
+
+### `classNames`
+
+- **Type:** `{ container?: string; background?: string; content?: string; }`
+- Object for specifying class names for different parts of the container:
+  - `container`: Class name for the outermost container.
+  - `background`: Class name for the background element.
+  - `content`: Class name for the content wrapper.
+
+## Example Usage
+
+### Basic Background Container
+
+```tsx
+import BackgroundContainer from "./BackgroundContainer";
+
+function Example() {
+  return (
+    <BackgroundContainer background='/images/custom-pattern.svg'>
+      <h1 className='text-white'>Hello, World!</h1>
+    </BackgroundContainer>
+  );
+}
+```
+
+### Custom Class Names
+
+```tsx
+import BackgroundContainer from "./BackgroundContainer";
+
+function Example() {
+  return (
+    <BackgroundContainer
+      className='rounded-lg shadow-lg'
+      classNames={{
+        container: "p-4",
+        background: "opacity-50",
+        content: "text-center",
+      }}
+    >
+      <p className='text-lg font-bold'>Welcome!</p>
+    </BackgroundContainer>
+  );
+}
+```
+
+## Notes
+
+- By default, the background image is positioned at the center and covers the entire container (`bg-center bg-cover`).
+- To make the background interactive (e.g., for clickable areas), you can remove the `pointer-events-none` class from the background element by customizing `classNames.background`.
+- Use the `className` and `classNames` props for granular control over the container and its sub-elements.
+
+## Utilities Used
+
+The component uses the `cn` utility for conditionally combining class names. Ensure that `cn` is properly implemented in your project for optimal usage.

@@ -1,0 +1,136 @@
+# Carousel
+
+A customizable carousel component built with `embla-carousel-react` and designed for flexibility and accessibility. This component supports plugins, multiple orientations, and custom navigation controls.
+
+## Exports
+
+The following components are exported:
+
+- `Carousel`
+- `CarouselContent`
+- `CarouselItem`
+- `CarouselPrevious`
+- `CarouselNext`
+
+## Carousel Props
+
+### `opts`
+
+- **Type:** `CarouselOptions`
+- Options for the carousel initialization.
+
+### `plugins`
+
+- **Type:** `CarouselPlugin`
+- Plugins for extending carousel functionality.
+
+### `orientation`
+
+- **Type:** `"horizontal" | "vertical"`
+- Determines the orientation of the carousel.
+- **Default:** `"horizontal"`
+
+### `setApi`
+
+- **Type:** `(api: CarouselApi) => void`
+- Callback function to set the carousel API.
+
+### `className`
+
+- **Type:** `string`
+- Additional class names for the container.
+
+### `children`
+
+- **Type:** `React.ReactNode`
+- The child elements of the carousel.
+
+## Example Usage
+
+### Basic Carousel
+
+```tsx
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "./Carousel";
+
+export default function Example() {
+  return (
+    <Carousel opts={{ loop: true }}>
+      <CarouselPrevious />
+      <CarouselContent>
+        <CarouselItem>
+          <div className='h-64 w-full bg-red-500'>Slide 1</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className='h-64 w-full bg-blue-500'>Slide 2</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className='h-64 w-full bg-green-500'>Slide 3</div>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselNext />
+    </Carousel>
+  );
+}
+```
+
+### Vertical Carousel
+
+```tsx
+export default function VerticalCarousel() {
+  return (
+    <Carousel orientation='vertical' opts={{ loop: true }}>
+      <CarouselPrevious />
+      <CarouselContent>
+        <CarouselItem>
+          <div className='h-64 w-full bg-red-500'>Slide 1</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className='h-64 w-full bg-blue-500'>Slide 2</div>
+        </CarouselItem>
+        <CarouselItem>
+          <div className='h-64 w-full bg-green-500'>Slide 3</div>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselNext />
+    </Carousel>
+  );
+}
+```
+
+## Component Breakdown
+
+### `Carousel`
+
+Wraps the entire carousel and provides a context for its child components.
+
+### `CarouselContent`
+
+A wrapper for the carousel items. This component connects to the Embla carousel API.
+
+### `CarouselItem`
+
+Represents a single slide in the carousel. It adjusts its size based on the orientation.
+
+### `CarouselPrevious`
+
+A button for navigating to the previous slide. It is disabled if no more slides are available in the previous direction.
+
+### `CarouselNext`
+
+A button for navigating to the next slide. It is disabled if no more slides are available in the next direction.
+
+## Notes
+
+- The carousel uses `embla-carousel-react` for its core functionality.
+- Ensure the `embla-carousel` library is installed and properly configured.
+- Customize the navigation buttons and container styles with Tailwind CSS or your preferred CSS framework.
+
+## Utilities Used
+
+- The `cn` utility is used for combining class names conditionally.

@@ -1,0 +1,101 @@
+# Grid System
+
+A responsive grid system with infinite scroll support and card-based items.
+
+## Grid Component
+
+Renders a responsive grid layout with optional infinite scrolling.
+
+### Usage
+
+```tsx
+<Grid
+  items={items}
+  textProps={{ title: "Grid Title", subtitle: "Description" }}
+  loadMoreItems={{ hasMore: true, loadMore: () => void }}
+>
+  {(item) => <GridItem {...item} />}
+</Grid>
+```
+
+### Props
+
+| Name            | Type               | Description                |
+| --------------- | ------------------ | -------------------------- |
+| `items`         | `T[]`              | Array of items to display  |
+| `textProps`     | `LandingTextProps` | Header text configuration  |
+| `loadMoreItems` | `Object`           | Infinite scroll settings   |
+| `className`     | `string?`          | Container class name       |
+| `classNames`    | `Object`           | Component-specific classes |
+
+## GridItem Component
+
+Card component for grid items with image, header, and footer sections.
+
+### Usage
+
+```tsx
+<GridItem
+  Link={Link}
+  href='/path'
+  header={{ title: "Title", subtitle: "Subtitle" }}
+  image='/image.jpg'
+  footer={{
+    appName: "App",
+    description: "Description",
+    buttonLabel: "Action",
+  }}
+/>
+```
+
+### Props
+
+| Name     | Type            | Required | Description          |
+| -------- | --------------- | -------- | -------------------- |
+| `Link`   | `ComponentType` | Yes      | Navigation component |
+| `href`   | `string`        | No       | Navigation URL       |
+| `header` | `Object`        | Yes      | Card header content  |
+| `image`  | `string`        | Yes      | Image URL            |
+| `footer` | `Object`        | Yes      | Footer configuration |
+
+## Complete Example
+
+```tsx
+const MyGrid = () => (
+  <Grid
+    items={[
+      {
+        title: "Item",
+        image: "/image.jpg",
+        description: "Description",
+      },
+    ]}
+    textProps={{
+      title: "My Grid",
+      subtitle: "Grid description",
+    }}
+  >
+    {(item) => (
+      <GridItem
+        Link={Link}
+        header={{
+          title: item.title,
+          subtitle: "Subtitle",
+        }}
+        image={item.image}
+        footer={{
+          appName: "App",
+          description: item.description,
+          buttonLabel: "View",
+        }}
+      />
+    )}
+  </Grid>
+);
+```
+
+## Styling
+
+- Uses Tailwind CSS for responsive design
+- Grid adapts from 1 to 5 columns based on screen size
+- Supports custom className injection for styling overrides

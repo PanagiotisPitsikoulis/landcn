@@ -1,0 +1,50 @@
+# useIsMounted Hook
+
+React hook that determines if a component has mounted to handle mounting states.
+
+## Usage
+
+```tsx
+import { useIsMounted } from "@/hooks/use-is-mounted";
+
+function Component() {
+  const isMounted = useIsMounted();
+
+  return isMounted ? <div>Mounted</div> : null;
+}
+```
+
+## Examples
+
+### Animation After Mount
+
+```tsx
+function FadeIn() {
+  const isMounted = useIsMounted();
+
+  return (
+    <div className={`opacity-0 ${isMounted ? "opacity-100" : ""}`}>Content</div>
+  );
+}
+```
+
+### Conditional Rendering
+
+```tsx
+function LoadingState() {
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return <Skeleton />;
+  }
+
+  return <Content />;
+}
+```
+
+## Features
+
+- Zero dependencies
+- Handles component mounting state
+- Prevents layout shifts
+- Micro-delay for stability

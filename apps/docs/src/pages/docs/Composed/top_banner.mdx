@@ -1,0 +1,63 @@
+# Top Banner
+
+Announcement banner for displaying important messages at the top of your page.
+
+## Installation
+
+```bash
+npm install @nextui-org/react
+```
+
+## Usage
+
+```tsx
+import { TopBanner } from "@/components/top-banner";
+
+export default function Header() {
+  return <TopBanner>🎉 Welcome to our new website!</TopBanner>;
+}
+```
+
+## Props
+
+| Name          | Type                                  | Description    |
+| ------------- | ------------------------------------- | -------------- |
+| `children`    | `ReactNode`                           | Banner content |
+| `dismissible` | `boolean`                             | Allow closing  |
+| `variant`     | `'default' \| 'success' \| 'warning'` | Visual style   |
+| `className`   | `string`                              | Custom classes |
+
+## Examples
+
+### With Action
+
+```tsx
+<TopBanner variant='success'>
+  <span>50% off all products!</span>
+  <Button size='sm'>Shop Now</Button>
+</TopBanner>
+```
+
+### Dismissible
+
+```tsx
+<TopBanner dismissible>New features available</TopBanner>
+```
+
+### Custom Style
+
+```tsx
+<TopBanner
+  className='bg-gradient-to-r from-blue-500 to-purple-500'
+  variant='default'
+>
+  Custom styled banner
+</TopBanner>
+```
+
+## Features
+
+- Multiple variants
+- Optional dismiss button
+- Responsive design
+- Custom styling support
