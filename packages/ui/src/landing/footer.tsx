@@ -1,4 +1,6 @@
-import { Link } from "@nextui-org/react";
+import { cn, Link } from "@nextui-org/react";
+import { ThemeSwitch } from "../components";
+import { pageBounds } from "./page-container";
 
 function getCurrentYear(): number {
   return new Date().getFullYear();
@@ -16,7 +18,10 @@ export type FooterProps = {
 
 export const Footer = ({ text, creatorExternalLink }: FooterProps) => {
   return (
-    <footer className='container mx-auto max-w-7xl pb-12 px-12'>
+    <footer
+      className={cn("flex items-center justify-between pb-12", pageBounds)}
+    >
+      <div></div>
       <div className='flex flex-col justify-center items-center gap-1'>
         <p className='text-sm text-default-400'>
           © {getCurrentYear()} {text.brandName}. {text.copyrightText}.
@@ -34,6 +39,7 @@ export const Footer = ({ text, creatorExternalLink }: FooterProps) => {
           </Link>
         </p>
       </div>
+      <ThemeSwitch />
     </footer>
   );
 };

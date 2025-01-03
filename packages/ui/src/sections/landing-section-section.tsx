@@ -99,8 +99,6 @@ export const LandingSectionRightSection: React.FC<LandingSectionSection> = ({
       orientation='right'
       landingTextProps={{
         ...text,
-        className:
-          "lg:text-left lg:flex lg:items-start lg:justify-start lg:pl-14",
         bottomContent: features ? (
           <FeaturesGrid
             classNames={{

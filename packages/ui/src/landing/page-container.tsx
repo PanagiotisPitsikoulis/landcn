@@ -1,5 +1,6 @@
 import { cn, Spacer } from "@nextui-org/react";
 import React from "react";
+import { Footer } from "./footer";
 
 export const pageBounds = "lg:px-20 px-6 w-full";
 
@@ -17,12 +18,23 @@ export function PageContainer({
   className?: string;
 }) {
   return (
-    <div className={cn("flex-grow", pageBounds, className, classNames?.base)}>
-      <Spacer y={5} className='hidden lg:block' />
-      <div className={cn("flex flex-col gap-10", classNames?.container)}>
-        {children}
+    <>
+      <div className={cn("flex-grow", pageBounds, className, classNames?.base)}>
+        <Spacer y={5} className='hidden lg:block' />
+        <main className={cn("flex flex-col gap-10", classNames?.container)}>
+          {children}
+        </main>
+        <Spacer y={60} />
       </div>
-      <Spacer y={60} />
-    </div>
+      <Footer
+        creatorExternalLink='https://www.panagiotispitsikoulis.gr'
+        text={{
+          brandName: "LandCN",
+          copyrightText: "All rights reserved",
+          createdByText: "Created by",
+          creatorName: "Panagiotis Pitsikoulis",
+        }}
+      />
+    </>
   );
 }

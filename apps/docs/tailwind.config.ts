@@ -8,9 +8,7 @@ const config: Pick<Config, "content" | "presets" | "plugins" | "darkMode"> = {
   content: [
     "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "../../packages/ui/src//**/*.{js,ts,jsx,tsx}",
-    "./src/app/**/*.tsx",
-    "./src/pages/**/*.tsx",
-    "./src/components/**/*.tsx",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   plugins: [nextui()],
   darkMode: "class",

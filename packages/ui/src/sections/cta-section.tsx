@@ -26,7 +26,7 @@ export const CtaSection: React.FC<CTASectionProps> = ({
   ctaText,
 }) => {
   return (
-    <BackgroundContainer className='h-[60rem] lg:h-[80vh]'>
+    <BackgroundContainer>
       <LandingSection
         orientation='center'
         landingTextProps={{

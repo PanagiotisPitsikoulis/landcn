@@ -1,5 +1,6 @@
 import type { DocsThemeConfig } from "nextra-theme-docs";
 import { PlayIcon } from "@repo/ui/icons";
+import { Footer } from "@repo/ui/landing";
 
 const config: DocsThemeConfig = {
   logo: (
@@ -7,16 +8,21 @@ const config: DocsThemeConfig = {
       <PlayIcon size={20} />
     </>
   ),
+  footer: {
+    component: (
+      <Footer
+        creatorExternalLink='https://www.panagiotispitsikoulis.gr'
+        text={{
+          brandName: "LandCN",
+          copyrightText: "All rights reserved",
+          createdByText: "Created by",
+          creatorName: "Panagiotis Pitsikoulis",
+        }}
+      />
+    ),
+  },
   sidebar: {
     toggleButton: true,
-  },
-  banner: {
-    content: "LandCN, the ShadCN for landing pages.",
-  },
-  color: {
-    hue: 200,
-    lightness: 50,
-    saturation: 50,
   },
   docsRepositoryBase:
     "https://github.com/PanagiotisPitsikoulis/landing.monorepo",
