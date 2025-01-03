@@ -1,7 +1,7 @@
 "use client";
 
 export * from "./carousel";
-export * from "./chart";
+// export * from "./chart";
 export * from "./grid";
 export * from "./gridItem";
 export * from "./iphone";
