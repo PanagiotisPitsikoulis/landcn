@@ -1,6 +1,5 @@
 import React from "react";
-import BackgroundContainer from "../landing/background-container";
-import { LandingSection } from "../landing";
+import { BackgroundContainer, LandingSection } from "../landing";
 import { Button, Link } from "@nextui-org/react";
 import { ArrowRightIcon } from "lucide-react";
 
@@ -26,7 +25,7 @@ export const CtaSection: React.FC<CTASectionProps> = ({
   ctaText,
 }) => {
   return (
-    <BackgroundContainer>
+    <BackgroundContainer background='/gradients/waves.svg'>
       <LandingSection
         orientation='center'
         landingTextProps={{

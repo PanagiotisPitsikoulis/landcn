@@ -10,3 +10,4 @@ export * from "./gradient-box";
 export * from "./landing-section";
 export * from "./landing-text";
 export * from "./page-container";
+export * from "./typography";
