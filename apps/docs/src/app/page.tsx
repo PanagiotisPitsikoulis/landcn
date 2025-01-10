@@ -25,27 +25,37 @@ import {
   LandingSectionRightSection,
 } from "@repo/ui/sections";
 import { cn } from "@repo/ui/extras";
+import { ScriptCopyBtn } from "@repo/ui/components";
 
 export default function Page(): JSX.Element {
   return (
-    <PageContainer bleed classNames={{ container: "space-y-20 pt-0 lg:pt-0" }}>
-      <BackgroundContainer
-        className={cn("pt-10 lg:pt-32", pageBounds)}
-        background={<div className={cn("bg-content2")}></div>}
-      >
-        <HeroSection
-          ctaLink='/docs/get_started'
-          ctaText='Get Started'
-          title='LandCN'
-          images={[
-            "https://images.pexels.com/photos/17356523/pexels-photo-17356523/free-photo-of-silhouette-of-man-rock-climbing.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            "https://images.pexels.com/photos/29740978/pexels-photo-29740978/free-photo-of-artistic-chinese-dragon-ornaments-on-red-background.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            "https://images.pexels.com/photos/29493504/pexels-photo-29493504/free-photo-of-urban-fashion-model-in-modern-cityscape.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-            "https://images.pexels.com/photos/29904631/pexels-photo-29904631/free-photo-of-minimalist-chairs-in-sunlit-room.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-          ]}
-          subtitle='Build production-ready landing pages in minutes.'
-        />
-      </BackgroundContainer>
+    <PageContainer bleed classNames={{ container: "space-y-24 pt-0 lg:pt-0" }}>
+      <HeroSection
+        secondaryButton={
+          <ScriptCopyBtn
+            showMultiplePackageOptions={true}
+            codeLanguage='shell'
+            lightTheme='nord'
+            darkTheme='vitesse-dark'
+            commandMap={{
+              npm: "npm run shadcn add button",
+              yarn: "yarn shadcn add button",
+              pnpm: "pnpm dlx shadcn@latest add button",
+              bun: "bun x shadcn@latest add button",
+            }}
+          />
+        }
+        ctaLink='/docs/get_started'
+        ctaText='Get Started'
+        title='LandCN'
+        images={[
+          "https://images.pexels.com/photos/17356523/pexels-photo-17356523/free-photo-of-silhouette-of-man-rock-climbing.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/29740978/pexels-photo-29740978/free-photo-of-artistic-chinese-dragon-ornaments-on-red-background.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/29493504/pexels-photo-29493504/free-photo-of-urban-fashion-model-in-modern-cityscape.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "https://images.pexels.com/photos/29904631/pexels-photo-29904631/free-photo-of-minimalist-chairs-in-sunlit-room.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        ]}
+        subtitle='Build production-ready landing pages in minutes.'
+      />
       <BackgroundContainer className={cn(pageBounds)}>
         <LandingSectionLeftSection
           image={{
@@ -140,14 +150,12 @@ export default function Page(): JSX.Element {
         {/* Examples */}
         <></>
       </BackgroundContainer>
-      <BackgroundContainer className={cn(pageBounds)}>
-        <CtaSection
-          ctaLink='/docs/get_started'
-          ctaText='Start Building Now'
-          title='Transform Your Landing Pages'
-          subtitle='Join developers who are building modern, responsive landing pages with LandCN'
-        />
-      </BackgroundContainer>
+      <CtaSection
+        ctaLink='/docs/get_started'
+        ctaText='Start Building Now'
+        title='Transform Your Landing Pages'
+        subtitle='Join developers who are building modern, responsive landing pages with LandCN'
+      />
     </PageContainer>
   );
 }

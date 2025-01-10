@@ -20,34 +20,12 @@ type ResponsiveBackground = {
   "2xl"?: LayerContent;
 };
 
-/** Common properties for visual layers */
-type LayerProps = {
-  /** Layer opacity (0-1) */
-  opacity?: number;
-  /** CSS blend mode for layer composition */
-  blendMode?: React.CSSProperties["mixBlendMode"];
-  /** Additional CSS classes */
-  className?: string;
-};
-
 /** Props for the BackgroundContainer component */
 export type BackgroundContainerProps = {
-  /** Content to be rendered on top of the background */
   children: React.ReactNode;
-  /** Background content or responsive configuration */
   background?: LayerContent | ResponsiveBackground;
-  /** Overlay configuration for additional visual effects */
-  overlay?: LayerProps & {
-    /** Custom overlay content */
-    content?: LayerContent;
-    /** Background color when no content is provided */
-    color?: string;
-    /** Blur effect intensity in pixels */
-    blur?: number;
-  };
-  /** Container CSS class */
+  overlay?: LayerContent;
   className?: string;
-  /** CSS classes for specific container parts */
   classNames?: {
     container?: string;
     background?: string;
@@ -106,31 +84,18 @@ export const Layer = ({
  * A container component that supports multiple background layers with responsive options
  * @example
  * ```tsx
- * // With image URL
+ * // Simple background and overlay
  * <BackgroundContainer
  *   background="/images/hero.jpg"
- *   overlay={{ color: "rgba(0,0,0,0.5)", blur: 2 }}
+ *   overlay={<div className="bg-black/50 backdrop-blur-sm" />}
  * >
  *   <Content />
  * </BackgroundContainer>
  *
- * // With React element
+ * // With gradient overlay
  * <BackgroundContainer
  *   background={<video src="/video/hero.mp4" autoPlay muted loop />}
- *   overlay={{
- *     content: <div className="bg-gradient-to-b from-transparent to-black" />,
- *     opacity: 0.7
- *   }}
- * >
- *   <Content />
- * </BackgroundContainer>
- *
- * // With responsive config
- * <BackgroundContainer
- *   background={{
- *     default: "/images/mobile.jpg",
- *     lg: "/images/desktop.jpg"
- *   }}
+ *   overlay={<div className="bg-gradient-to-b from-transparent to-black/70" />}
  * >
  *   <Content />
  * </BackgroundContainer>
@@ -190,38 +155,13 @@ export function BackgroundContainer({
       />
 
       {/* Optional Overlay */}
-      {overlay && overlay.content && (
+      {overlay && (
         <Layer
-          content={overlay.content}
+          content={overlay}
           className={cn(
             "absolute inset-0 pointer-events-none select-none",
             classNames.overlay
           )}
-          style={{
-            opacity: overlay.opacity ?? 0.5,
-            backdropFilter: overlay.blur
-              ? `blur(${overlay.blur}px)`
-              : undefined,
-            mixBlendMode: overlay.blendMode ?? "normal",
-          }}
-        />
-      )}
-
-      {/* Fallback Color Overlay */}
-      {overlay && !overlay.content && (
-        <div
-          className={cn(
-            "absolute inset-0 pointer-events-none select-none",
-            classNames.overlay
-          )}
-          style={{
-            backgroundColor: overlay.color ?? "rgb(0 0 0 / 0.5)",
-            opacity: overlay.opacity ?? 0.5,
-            backdropFilter: overlay.blur
-              ? `blur(${overlay.blur}px)`
-              : undefined,
-            mixBlendMode: overlay.blendMode ?? "normal",
-          }}
         />
       )}
 

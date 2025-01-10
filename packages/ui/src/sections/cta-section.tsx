@@ -1,5 +1,5 @@
 import React from "react";
-import { BackgroundContainer, LandingSection } from "../landing";
+import { BackgroundContainer, LandingSection, pageBounds } from "../landing";
 import { Button, Link } from "@nextui-org/react";
 import { ArrowRightIcon } from "lucide-react";
 
@@ -25,8 +25,15 @@ export const CtaSection: React.FC<CTASectionProps> = ({
   ctaText,
 }) => {
   return (
-    <BackgroundContainer background='/gradients/waves.svg'>
+    <BackgroundContainer
+      className={pageBounds}
+      background='/gradients/bg/pink.jpg'
+      overlay={
+        <div className='bg-gradient-to-b from-background via-transparent to-background'></div>
+      }
+    >
       <LandingSection
+        className='py-[10rem]'
         orientation='center'
         landingTextProps={{
           title,
