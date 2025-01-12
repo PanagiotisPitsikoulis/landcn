@@ -25,8 +25,8 @@ const titleStyles = cva("font-extrabold text-foreground capitalize", {
   variants: {
     size: {
       sm: "text-3xl sm:text-4xl md:text-5xl w-full sm:w-3/4 md:w-2/3",
-      md: "text-5xl sm:text-6xl md:text-7xl w-full sm:w-2/3 md:w-1/2",
-      lg: "text-7xl sm:text-8xl md:text-9xl w-full sm:w-1/2 md:w-1/3",
+      md: "text-4xl sm:text-5xl md:text-6xl w-full sm:w-2/3 md:w-1/2",
+      lg: "text-6xl sm:text-7xl md:text-8xl w-full sm:w-1/2 md:w-1/3",
     },
   },
   defaultVariants: {

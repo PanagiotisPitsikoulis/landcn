@@ -13,7 +13,6 @@ const config: Pick<
     "../../packages/ui/src//**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [nextui(), require("tailwindcss-animate")],
   darkMode: "class",
   theme: {
     extend: {
@@ -33,7 +32,8 @@ const config: Pick<
       },
     },
   },
-  presets: [sharedConfig],
+  plugins: [nextui(), require("tailwindcss-animate")],
+  // presets: [sharedConfig],
 };
 
 export default config;

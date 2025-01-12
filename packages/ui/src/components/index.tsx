@@ -16,3 +16,4 @@ export * from "./bento-grid";
 export * from "./hero-video-dialog";
 export * from "./marquee";
 export * from "./code-comparison";
+export * from "./scroll-progress";

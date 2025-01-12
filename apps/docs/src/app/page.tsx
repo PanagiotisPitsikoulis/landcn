@@ -24,7 +24,7 @@ import {
   LandingSectionLeftSection,
   LandingSectionRightSection,
 } from "@repo/ui/sections";
-import { cn } from "@repo/ui/extras";
+import { Card, CardBody, cn } from "@repo/ui/extras";
 import { ScriptCopyBtn, TopBanner } from "@repo/ui/components";
 
 export default function Page(): JSX.Element {
@@ -35,7 +35,7 @@ export default function Page(): JSX.Element {
         pathsData={[
           {
             path: "/",
-            emoji: "🥰",
+            emoji: "🎨",
             primaryText: "The ShadCN for landing pages",
             secondaryLink: { href: "/" },
             primaryLink: {
@@ -72,12 +72,12 @@ export default function Page(): JSX.Element {
             ctaText='Get Started'
             title='LandCN'
             images={[
-              "https://images.pexels.com/photos/17356523/pexels-photo-17356523/free-photo-of-silhouette-of-man-rock-climbing.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-              "https://images.pexels.com/photos/29740978/pexels-photo-29740978/free-photo-of-artistic-chinese-dragon-ornaments-on-red-background.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-              "https://images.pexels.com/photos/29493504/pexels-photo-29493504/free-photo-of-urban-fashion-model-in-modern-cityscape.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-              "https://images.pexels.com/photos/29904631/pexels-photo-29904631/free-photo-of-minimalist-chairs-in-sunlit-room.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+              "/gradients/abstract/4.jpg",
+              "/gradients/abstract/5.jpg",
+              "/gradients/abstract/6.jpg",
+              "/gradients/abstract/3.jpg",
             ]}
-            subtitle='Build production-ready landing pages in minutes.'
+            subtitle='🧑🏻‍🎨 Build production-ready landing pages in minutes.'
           />
           <BackgroundContainer className={cn(pageBounds)}>
             <LandingSectionLeftSection
@@ -87,7 +87,7 @@ export default function Page(): JSX.Element {
               text={{
                 title: "Modern Tools",
                 subtitle:
-                  "Leverage the latest web technologies and best practices for building exceptional landing pages",
+                  "🤖 Leverage the latest web technologies and best practices for building exceptional landing pages",
               }}
               features={[
                 {
@@ -117,7 +117,7 @@ export default function Page(): JSX.Element {
               text={{
                 title: "DX First",
                 subtitle:
-                  "Everything you need to build landing pages faster with confidence.",
+                  "🧑🏻‍💻 Everything you need to build landing pages faster with confidence.",
               }}
               features={[
                 {
@@ -147,7 +147,7 @@ export default function Page(): JSX.Element {
               text={{
                 title: "Complete Component Kit",
                 subtitle:
-                  "All the essential sections you need to create converting landing pages",
+                  "🛍️ All the essential sections you need to create converting landing pages",
               }}
               features={[
                 {
@@ -169,9 +169,13 @@ export default function Page(): JSX.Element {
               ]}
             />
           </BackgroundContainer>
-          <BackgroundContainer className={cn(pageBounds)}>
+          <BackgroundContainer className={cn(pageBounds, "py-24")}>
             {/* Examples */}
-            <></>
+            <section>
+              <Card className='h-[35rem]'>
+                <CardBody></CardBody>
+              </Card>
+            </section>
           </BackgroundContainer>
           <CtaSection
             ctaLink='/docs/get_started'
