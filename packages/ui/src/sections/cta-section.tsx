@@ -1,7 +1,8 @@
 import React from "react";
 import { BackgroundContainer, LandingSection, pageBounds } from "../landing";
-import { Button, Link } from "@nextui-org/react";
+import { Button, cn, Link } from "@nextui-org/react";
 import { ArrowRightIcon } from "lucide-react";
+import { TestimonialsSection } from "./testimonials-section";
 
 export type CTASectionProps = {
   title: string;
@@ -26,15 +27,14 @@ export const CtaSection: React.FC<CTASectionProps> = ({
 }) => {
   return (
     <BackgroundContainer
-      className={pageBounds}
+      className={cn(pageBounds, "py-[5rem]")}
       background='/gradients/bg/pink.jpg'
       overlay={
-        <div className='bg-gradient-to-b from-background via-transparent to-background'></div>
+        <div className='bg-gradient-to-r from-background via-background'></div>
       }
     >
       <LandingSection
-        className='py-[10rem]'
-        orientation='center'
+        orientation='left'
         landingTextProps={{
           title,
           subtitle,
@@ -51,6 +51,46 @@ export const CtaSection: React.FC<CTASectionProps> = ({
             </Button>
           ),
         }}
+      />
+      <TestimonialsSection
+        reviews={[
+          {
+            name: "Jack",
+            username: "@jack",
+            body: "I've never seen anything like this before. It's amazing. I love it.",
+            img: "https://avatar.vercel.sh/jack",
+          },
+          {
+            name: "Jill",
+            username: "@jill",
+            body: "I don't know what to say. I'm speechless. This is amazing.",
+            img: "https://avatar.vercel.sh/jill",
+          },
+          {
+            name: "John",
+            username: "@john",
+            body: "I'm at a loss for words. This is amazing. I love it.",
+            img: "https://avatar.vercel.sh/john",
+          },
+          {
+            name: "Jane",
+            username: "@jane",
+            body: "I'm at a loss for words. This is amazing. I love it.",
+            img: "https://avatar.vercel.sh/jane",
+          },
+          {
+            name: "Jenny",
+            username: "@jenny",
+            body: "I'm at a loss for words. This is amazing. I love it.",
+            img: "https://avatar.vercel.sh/jenny",
+          },
+          {
+            name: "James",
+            username: "@james",
+            body: "I'm at a loss for words. This is amazing. I love it.",
+            img: "https://avatar.vercel.sh/james",
+          },
+        ]}
       />
     </BackgroundContainer>
   );

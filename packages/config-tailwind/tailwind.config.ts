@@ -1,7 +1,5 @@
 import type { Config } from "tailwindcss";
 
 // We want each package to be responsible for its own content.
-const config: Omit<Config, "content"> = {
-  theme: {},
-};
+const config: Omit<Config, "content"> = {};
 export default config;

@@ -69,7 +69,7 @@ export function ScriptCopyBtn({
         <div className='mb-2 flex items-center justify-between'>
           {showMultiplePackageOptions && (
             <div className='relative'>
-              <div className='inline-flex overflow-hidden rounded-md border border-content3 text-xs'>
+              <div className='inline-flex overflow-hidden rounded-none border border-content3 text-xs'>
                 {packageManagers.map((pm, index) => (
                   <div key={pm} className='flex items-center'>
                     {index > 0 && (

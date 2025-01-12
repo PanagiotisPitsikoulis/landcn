@@ -38,12 +38,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   secondaryButton,
 }) => {
   return (
-    <BackgroundContainer
-      className={cn("pt-10 lg:pt-32", pageBounds)}
-      background={<AnimatedGridPattern className='w-full' />}
-      overlay={<div className='bg-background/90 dark:bg-background/50' />}
-    >
-      <section className='flex items-start justify-between h-[calc(100vh-150px)] max-lg:h-[50rem] flex-col gap-20 overflow-hidden'>
+    <BackgroundContainer className={cn("pt-10 lg:pt-20", pageBounds)}>
+      <section className='flex items-start justify-between h-[calc(100vh-150px)] max-lg:h-[50rem] flex-col gap-14 overflow-hidden'>
         <AnimatedWrapper
           className='flex items-start justify-start'
           triggerOnView
@@ -58,12 +54,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             orientation='left'
             size='md'
             bottomContent={
-              <div
-                className={cn(
-                  secondaryButton &&
-                    "flex flex-col lg:flex-row gap-2 lg:items-end items-start"
-                )}
-              >
+              <div className={cn(secondaryButton && "flex flex-col gap-2")}>
+                {secondaryButton}
                 <Button
                   as={Link}
                   href={ctaLink}
@@ -73,7 +65,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 >
                   {ctaText}
                 </Button>
-                {secondaryButton}
               </div>
             }
           />
